@@ -1,0 +1,13 @@
+.env
+/myenv/
+myenv
+./myenv
+/myenv
+myenv/
+data/
+data/*
+/data/
+./data
+.ipynb_checkpoints/
+data/creditcard.csv
+data/creditcard.csv
