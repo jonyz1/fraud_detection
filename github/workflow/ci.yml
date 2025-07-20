@@ -1,0 +1,46 @@
+
+name: CI Pipeline for Task 1 Preprocessing
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Set up Python 3.8
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.8'
+
+      # Install dependencies
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # Run tests
+      - name: Run tests
+        run: |
+          python -m unittest test_task1_preprocessing.py -v
+
+      # Verify output files
+      - name: Check output files
+        run: |
+          ls -l data/processed/
+          test -f data/processed/X_fraud.csv
+          test -f data/processed/y_fraud.csv
+          test -f data/processed/X_credit.csv
+          test -f data/processed/y_credit.csv
+          ls -l plots/
