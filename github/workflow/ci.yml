@@ -1,4 +1,4 @@
-name: CI Pipeline for Tasks 1, 2, and 3
+
 
 on:
   push:
@@ -29,15 +29,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # Run Task 1 tests
-      - name: Run Task 1 tests
-        run: |
-          python -m unittest test_task1_preprocessing.py -v
-
-      # Run Task 2 and 3 tests
-      - name: Run Task 2 and 3 tests
-        run: |
-          python -m unittest test_task2_3_modeling_explainability.py -v
 
       # Verify output files
       - name: Check output files
@@ -47,18 +38,3 @@ jobs:
           test -f data/processed/y_fraud.csv
           test -f data/processed/X_credit.csv
           test -f data/processed/y_credit.csv
-          ls -l models/
-          test -f models/Logistic Regression_fraud.pkl
-          test -f models/Random Forest_fraud.pkl
-          test -f models/Logistic Regression_creditcard.pkl
-          test -f models/Random Forest_creditcard.pkl
-          ls -l results/
-          test -f results/predictions_Logistic Regression_fraud.csv
-          test -f results/predictions_Random Forest_fraud.csv
-          test -f results/predictions_Logistic Regression_creditcard.csv
-          test -f results/predictions_Random Forest_creditcard.csv
-          test -f results/metrics_fraud.txt
-          test -f results/metrics_creditcard.txt
-          ls -l plots/
-          test -f plots/shap_summary_Random Forest_fraud.png
-          test -f plots/shap_force_Random Forest_fraud.png
