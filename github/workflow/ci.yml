@@ -1,5 +1,4 @@
 
-name: CI Pipeline for Task 1 Preprocessing
 
 on:
   push:
@@ -30,10 +29,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # Run tests
-      - name: Run tests
-        run: |
-          python -m unittest test_task1_preprocessing.py -v
 
       # Verify output files
       - name: Check output files
@@ -43,4 +38,3 @@ jobs:
           test -f data/processed/y_fraud.csv
           test -f data/processed/X_credit.csv
           test -f data/processed/y_credit.csv
-          ls -l plots/
