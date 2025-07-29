@@ -118,6 +118,7 @@ class TestTask2_3ModelingExplainability(unittest.TestCase):
                         "SHAP force plot should exist")
 
     def test_select_best_model(self):
+        
         """Test best model selection."""
         X_fraud, y_fraud, X_credit, y_credit = load_preprocessed_data()
         X_fraud_train, X_fraud_test, y_fraud_train, y_fraud_test = split_data(X_fraud, y_fraud, test_size=0.33)
